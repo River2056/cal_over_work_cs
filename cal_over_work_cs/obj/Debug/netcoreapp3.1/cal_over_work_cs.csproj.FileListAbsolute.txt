@@ -1,0 +1,12 @@
+/Users/tungchinchen/Desktop/cs_projects/cal_over_work_cs/cal_over_work_cs/cal_over_work_cs/bin/Debug/netcoreapp3.1/cal_over_work_cs.deps.json
+/Users/tungchinchen/Desktop/cs_projects/cal_over_work_cs/cal_over_work_cs/cal_over_work_cs/bin/Debug/netcoreapp3.1/cal_over_work_cs.runtimeconfig.json
+/Users/tungchinchen/Desktop/cs_projects/cal_over_work_cs/cal_over_work_cs/cal_over_work_cs/bin/Debug/netcoreapp3.1/cal_over_work_cs.runtimeconfig.dev.json
+/Users/tungchinchen/Desktop/cs_projects/cal_over_work_cs/cal_over_work_cs/cal_over_work_cs/bin/Debug/netcoreapp3.1/cal_over_work_cs.dll
+/Users/tungchinchen/Desktop/cs_projects/cal_over_work_cs/cal_over_work_cs/cal_over_work_cs/bin/Debug/netcoreapp3.1/cal_over_work_cs.pdb
+/Users/tungchinchen/Desktop/cs_projects/cal_over_work_cs/cal_over_work_cs/cal_over_work_cs/obj/Debug/netcoreapp3.1/cal_over_work_cs.csprojAssemblyReference.cache
+/Users/tungchinchen/Desktop/cs_projects/cal_over_work_cs/cal_over_work_cs/cal_over_work_cs/obj/Debug/netcoreapp3.1/cal_over_work_cs.AssemblyInfoInputs.cache
+/Users/tungchinchen/Desktop/cs_projects/cal_over_work_cs/cal_over_work_cs/cal_over_work_cs/obj/Debug/netcoreapp3.1/cal_over_work_cs.AssemblyInfo.cs
+/Users/tungchinchen/Desktop/cs_projects/cal_over_work_cs/cal_over_work_cs/cal_over_work_cs/obj/Debug/netcoreapp3.1/cal_over_work_cs.csproj.CoreCompileInputs.cache
+/Users/tungchinchen/Desktop/cs_projects/cal_over_work_cs/cal_over_work_cs/cal_over_work_cs/obj/Debug/netcoreapp3.1/cal_over_work_cs.dll
+/Users/tungchinchen/Desktop/cs_projects/cal_over_work_cs/cal_over_work_cs/cal_over_work_cs/obj/Debug/netcoreapp3.1/cal_over_work_cs.pdb
+/Users/tungchinchen/Desktop/cs_projects/cal_over_work_cs/cal_over_work_cs/cal_over_work_cs/obj/Debug/netcoreapp3.1/cal_over_work_cs.genruntimeconfig.cache
