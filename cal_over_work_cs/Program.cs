@@ -6,13 +6,13 @@ namespace cal_over_work_cs
 {
     class Program
     { 
-        private const string workStartHours = "09:00";
-        private const string workEndHours = "18:30";
-        private static string MONTH = "";
+        private const string WorkStartHours = "09:00";
+        private const string WorkEndHours = "18:30";
+        private static string _month = "";
         
         static List<string> WorkHoursList()
         {
-            string[] data = File.ReadAllLines($"./input/workTime_{MONTH}.txt");
+            string[] data = File.ReadAllLines($"./input/workTime_{_month}.txt");
             List<string> workHours = new List<string>();
             foreach (string s in data)
                 workHours.Add(s);
@@ -28,7 +28,7 @@ namespace cal_over_work_cs
         static void Main(string[] args)
         {
             Console.WriteLine("Enter month for input file (2 digits): ");
-            MONTH = Console.ReadLine();
+            _month = Console.ReadLine();
             List<string> workHours = WorkHoursList();
             List<string> outputDataList = new List<string>();
             int totalOverWorkHours = 0;
@@ -37,8 +37,8 @@ namespace cal_over_work_cs
                 string[] data = s.Split(", ");
                 string month = data[0].Substring(0, 2);
                 string day = data[0].Substring(2);
-                DateTime startTime = DateTime.ParseExact($"{month}-{day} {workStartHours}", "MM-dd HH:mm", null);
-                DateTime endTime = DateTime.ParseExact($"{month}-{day} {workEndHours}", "MM-dd HH:mm", null);
+                DateTime startTime = DateTime.ParseExact($"{month}-{day} {WorkStartHours}", "MM-dd HH:mm", null);
+                DateTime endTime = DateTime.ParseExact($"{month}-{day} {WorkEndHours}", "MM-dd HH:mm", null);
                 DateTime arriveTime = DateTime.ParseExact($"{month}-{day} {data[1]}", "MM-dd HH:mm", null);
                 DateTime leaveTime = DateTime.ParseExact($"{month}-{day} {data[2]}", "MM-dd HH:mm", null);
                 
@@ -70,7 +70,10 @@ namespace cal_over_work_cs
             OutputToConsoleAndwWriteToFile($"total over worked hours: {totalOverWorkHours}", outputDataList);
             
             // write to file
-            File.WriteAllLines($"./output/workTime_output_{MONTH}.txt", outputDataList.ToArray());
+            File.WriteAllLines($"./output/workTime_output_{_month}.txt", outputDataList.ToArray());
+            
+            Console.WriteLine("Done!");
+            Console.ReadKey();
         }
     }
 }

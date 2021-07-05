@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "hJzuOAgxpbAAOVFAKFLN0VV/QQCJSI9X+nEk68+j88BaZmBs6bNQ70/w9mPaJDfULqAuAgBc5T4EXfsN1isGnQ==",
+  "dgSpecHash": "FVUEZgBeL+0/dddhQ/W8Culxtvqnqa91PnF1cl9eeqk/H3bN7oxlmcFRkOYk9binT4iSER51PYm9dEdXoaTHzA==",
   "success": true,
-  "projectFilePath": "/Users/tungchinchen/Desktop/cs_projects/cal_over_work_cs/cal_over_work_cs/cal_over_work_cs/cal_over_work_cs.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\user\\Desktop\\projects\\cal_over_work_cs\\cal_over_work_cs\\cal_over_work_cs.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.15\\microsoft.netcore.app.host.win-x64.3.1.15.nupkg.sha512"
+  ],
   "logs": []
 }
