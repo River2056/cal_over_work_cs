@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using NPOI.SS.UserModel;
+using NPOI.XSSF.UserModel;
 
 namespace cal_over_work_cs
 {
@@ -10,7 +12,7 @@ namespace cal_over_work_cs
         private const string WorkEndHours = "18:30";
         private static string _month = "";
         
-        static List<string> WorkHoursList()
+        private static List<string> WorkHoursList()
         {
             string[] data = File.ReadAllLines($"./input/workTime_{_month}.txt");
             List<string> workHours = new List<string>();
@@ -19,18 +21,47 @@ namespace cal_over_work_cs
             return workHours;
         }
 
-        static void OutputToConsoleAndwWriteToFile(string message, List<string> dataList)
+        private static void OutputToConsoleAndwWriteToFile(string message, List<string> dataList)
         {
             Console.WriteLine(message);
             dataList.Add(message);
         }
-        
-        static void Main(string[] args)
+
+        private static void ExportToExcel(List<string> dataList, int totalOverWorkedHours)
+        {
+            string path = $"./output/workTime_output_{_month}.xlsx";
+
+            using (FileStream fs = new FileStream(path, FileMode.Create, FileAccess.Write))
+            {
+                IWorkbook workbook = new XSSFWorkbook();
+                ISheet worksheet = workbook.CreateSheet($"workTime_{_month}");
+
+                int rowIndex = 0;
+                IRow row = null;
+                foreach (string data in dataList)
+                {
+                    row = worksheet.CreateRow(rowIndex);
+                    int columnIndex = 0;
+                    string[] d = data.Split(", ");
+                    foreach (string subData in d)
+                    {
+                        row.CreateCell(columnIndex).SetCellValue(subData);
+                        columnIndex++;
+                    }
+                    rowIndex++;
+                }
+                workbook.Write(fs);
+            }
+            Console.WriteLine("Done exporting to excel");
+        }
+
+        private static void CalculateWorkTime()
         {
             Console.WriteLine("Enter month for input file (2 digits): ");
             _month = Console.ReadLine();
             List<string> workHours = WorkHoursList();
             List<string> outputDataList = new List<string>();
+            List<string> dataListForExcel = new List<string>();
             int totalOverWorkHours = 0;
             foreach (string s in workHours)
             {
@@ -53,6 +84,8 @@ namespace cal_over_work_cs
                     OutputToConsoleAndwWriteToFile($"overworked in hours: {Math.Floor(timeDiff.TotalHours)}", outputDataList);
                     totalOverWorkHours += (int) Math.Floor(timeDiff.TotalHours);
                     OutputToConsoleAndwWriteToFile("\n", outputDataList);
+                    string timeDiffStr = Math.Floor(timeDiff.TotalHours) > 0 ? $"+{Math.Floor(timeDiff.TotalHours)}" : $"{Math.Floor(timeDiff.TotalHours)}";
+                    dataListForExcel.Add($"{s}, {timeDiffStr}");
                 }
                 else
                 {
@@ -65,6 +98,8 @@ namespace cal_over_work_cs
                     OutputToConsoleAndwWriteToFile($"overwork in hours: {Math.Floor(overWorked.TotalHours)}", outputDataList);
                     totalOverWorkHours += (int) Math.Floor(overWorked.TotalHours);
                     OutputToConsoleAndwWriteToFile("\n", outputDataList);
+                    string timeDiffStr = Math.Floor(overWorked.TotalHours) > 0 ? $"+{Math.Floor(overWorked.TotalHours)}" : $"{Math.Floor(overWorked.TotalHours)}";
+                    dataListForExcel.Add($"{s}, {timeDiffStr}");
                 }
             }
             OutputToConsoleAndwWriteToFile($"total over worked hours: {totalOverWorkHours}", outputDataList);
@@ -72,8 +107,16 @@ namespace cal_over_work_cs
             // write to file
             File.WriteAllLines($"./output/workTime_output_{_month}.txt", outputDataList.ToArray());
             
+            // output to Excel
+            ExportToExcel(dataListForExcel, totalOverWorkHours);
+            
             Console.WriteLine("Done!");
             Console.ReadKey();
+        }
+        
+        public static void Main(string[] args)
+        {
+            CalculateWorkTime();
         }
     }
 }
