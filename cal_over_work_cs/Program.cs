@@ -50,6 +50,9 @@ namespace cal_over_work_cs
                     }
                     rowIndex++;
                 }
+
+                row = worksheet.CreateRow(rowIndex);
+                row.CreateCell(3).SetCellValue(totalOverWorkedHours);
                 workbook.Write(fs);
             }
             Console.WriteLine("Done exporting to excel");
